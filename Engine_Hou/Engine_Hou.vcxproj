@@ -147,6 +147,7 @@ x64\SDL2_image.lib;%(AdditionalDependencies)</AdditionalDependencies>
     <ClInclude Include="..\..\Engine_Hou_Clion\h_camera.h" />
     <ClInclude Include="..\..\Engine_Hou_Clion\h_drawline.h" />
     <ClInclude Include="..\..\Engine_Hou_Clion\h_framebuffer.h" />
+    <ClInclude Include="..\..\Engine_Hou_Clion\h_light.h" />
     <ClInclude Include="..\..\Engine_Hou_Clion\h_math.h" />
     <ClInclude Include="..\..\Engine_Hou_Clion\h_matrix.h" />
     <ClInclude Include="..\..\Engine_Hou_Clion\h_shader.h" />
