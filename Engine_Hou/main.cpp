@@ -50,9 +50,9 @@ public:
         renderer->SetFaceCull(CW);
 
         renderer->SetBG(Color4{0.678, 0.847, 0.902, 1.0});
-        renderer->SetambiColor(Vec4{0.35f, 0.35f, 0.35f, 1.0f});
+        renderer->SetambiColor(Vec4{0.55f, 0.55f, 0.55f, 1.0f});
         renderer->SetdiffColor(Vec4{0.20f, 0.20f, 0.20f, 1.0f});
-        renderer->SetspecColor(Vec4{0.10f, 0.10f, 0.10f, 1.0f});
+        renderer->SetspecColor(Vec4{0.05f, 0.05f, 0.05f, 1.0f});
 
         renderer->Clear();
         renderer->SetViewport(0, 0, WindowWidth, WindowHeight);
@@ -73,7 +73,7 @@ public:
         light->SetRadiance(Vec4{5.0f, 5.0f, 5.0f, 1.0f});
         light->SetRadius(5.0f);
         light->SetIntensity(10.0f);
-        light->SetFalloff(1.0f);
+        light->SetFalloff(0.85);
 
         renderer->SetVertexShader([&](int index, ShaderContext& output) {
 
