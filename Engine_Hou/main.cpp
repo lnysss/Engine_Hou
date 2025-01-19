@@ -5,50 +5,6 @@
 #include <string>
 #include "h_obj.h"
 
-/*const struct {Vec4 pos; Vec2 texcoord; Vec4 normal;} vs_input[36] = {
-        {Vec4{-0.5f, -0.5f, -0.5f, 1.0f},  Vec2{0.0f, 0.0f}, {0.0f, 0.0f, -1.0f, 0.0f}}, // Bottom-left
-        {Vec4{ 0.5f,  0.5f, -0.5f, 1.0f},  Vec2{1.0f, 1.0f}, {0.0f, 0.0f, -1.0f, 0.0f}}, // top-right
-        {Vec4{ 0.5f, -0.5f, -0.5f, 1.0f},  Vec2{1.0f, 0.0f}, {0.0f, 0.0f, -1.0f, 0.0f}}, // bottom-right
-        {Vec4{ 0.5f,  0.5f, -0.5f, 1.0f},  Vec2{1.0f, 1.0f}, {0.0f, 0.0f, -1.0f, 0.0f}}, // top-right
-        {Vec4{-0.5f, -0.5f, -0.5f, 1.0f},  Vec2{0.0f, 0.0f}, {0.0f, 0.0f, -1.0f, 0.0f}}, // bottom-left
-        {Vec4{-0.5f,  0.5f, -0.5f, 1.0f},  Vec2{0.0f, 1.0f}, {0.0f, 0.0f, -1.0f, 0.0f}}, // top-left
-
-        {Vec4{-0.5f, -0.5f,  0.5f, 1.0f},  Vec2{0.0f, 0.0f}, {0.0f, 0.0f, 1.0f, 0.0f}}, // bottom-left
-        {Vec4{ 0.5f, -0.5f,  0.5f, 1.0f},  Vec2{1.0f, 0.0f}, {0.0f, 0.0f, 1.0f, 0.0f}}, // bottom-right
-        {Vec4{ 0.5f,  0.5f,  0.5f, 1.0f},  Vec2{1.0f, 1.0f}, {0.0f, 0.0f, 1.0f, 0.0f}}, // top-right
-        {Vec4{ 0.5f,  0.5f,  0.5f, 1.0f},  Vec2{1.0f, 1.0f}, {0.0f, 0.0f, 1.0f, 0.0f}}, // top-right
-        {Vec4{-0.5f,  0.5f, 0.5f, 1.0f},  Vec2{0.0f, 1.0f}, {0.0f, 0.0f, 1.0f, 0.0f}}, // top-left
-        {Vec4{-0.5f, -0.5f, 0.5f, 1.0f},  Vec2{0.0f, 0.0f}, {0.0f, 0.0f, 1.0f, 0.0f}}, // bottom-left
-
-        {Vec4{-0.5f,  0.5f, 0.5f, 1.0f},  Vec2{1.0f, 0.0f}, {-1.0f, 0.0f, 0.0f,  0.0f}}, // top-right
-        {Vec4{-0.5f,  0.5f, -0.5f, 1.0f},  Vec2{1.0f, 1.0f}, {-1.0f, 0.0f, 0.0f, 0.0f}}, // top-left
-        {Vec4{-0.5f, -0.5f, -0.5f, 1.0f},  Vec2{0.0f, 1.0f}, {-1.0f, 0.0f, 0.0f, 0.0f}}, // bottom-left
-        {Vec4{-0.5f, -0.5f, -0.5f, 1.0f},  Vec2{0.0f, 1.0f}, {-1.0f, 0.0f, 0.0f, 0.0f}}, // bottom-left
-        {Vec4{-0.5f, -0.5f, 0.5f, 1.0f},  Vec2{0.0f, 0.0f}, {-1.0f, 0.0f, 0.0f,  0.0f}}, // bottom-right
-        {Vec4{-0.5f,  0.5f, 0.5f, 1.0f},  Vec2{1.0f, 0.0f}, {-1.0f, 0.0f, 0.0f,  0.0f}}, // top-right
-
-        {Vec4{ 0.5f,  0.5f, 0.5f, 1.0f},  Vec2{1.0f, 0.0f}, {1.0f, 0.0f, 0.0f,  0.0f}}, // top-left
-        {Vec4{ 0.5f, -0.5f, -0.5f, 1.0f},  Vec2{0.0f, 1.0f}, {1.0f, 0.0f, 0.0f, 0.0f}}, // bottom-right
-        {Vec4{ 0.5f,  0.5f, -0.5f, 1.0f},  Vec2{1.0f, 1.0f}, {1.0f, 0.0f, 0.0f, 0.0f}}, // top-right
-        {Vec4{ 0.5f, -0.5f, -0.5f, 1.0f},  Vec2{0.0f, 1.0f}, {1.0f, 0.0f, 0.0f, 0.0f}}, // bottom-right
-        {Vec4{ 0.5f,  0.5f, 0.5f, 1.0f},  Vec2{1.0f, 0.0f}, {1.0f, 0.0f, 0.0f,  0.0f}}, // top-left
-        {Vec4{ 0.5f, -0.5f, 0.5f, 1.0f},  Vec2{0.0f, 0.0f}, {1.0f, 0.0f, 0.0f,  0.0f}}, // bottom-left
-
-        {Vec4{-0.5f, -0.5f, -0.5f, 1.0f},  Vec2{0.0f, 1.0f}, {0.0f, -1.0f, 0.0f, 0.0f}}, // top-right
-        {Vec4{ 0.5f, -0.5f, -0.5f, 1.0f},  Vec2{1.0f, 1.0f}, {0.0f, -1.0f, 0.0f, 0.0f}}, // top-left
-        {Vec4{ 0.5f, -0.5f, 0.5f, 1.0f},  Vec2{1.0f, 0.0f}, {0.0f, -1.0f, 0.0f,  0.0f}}, // bottom-left
-        {Vec4{ 0.5f, -0.5f, 0.5f, 1.0f},  Vec2{1.0f, 0.0f}, {0.0f, -1.0f, 0.0f,  0.0f}}, // bottom-left
-        {Vec4{-0.5f, -0.5f, 0.5f, 1.0f},  Vec2{0.0f, 0.0f}, {0.0f, -1.0f, 0.0f,  0.0f}}, // bottom-right
-        {Vec4{-0.5f, -0.5f, -0.5f, 1.0f},  Vec2{0.0f, 1.0f}, {0.0f, -1.0f, 0.0f, 0.0f}}, // top-right
-
-        {Vec4{-0.5f,  0.5f, -0.5f, 1.0f},  Vec2{0.0f, 1.0f}, {0.0f, 1.0f, 0.0f, 0.0f}}, // top-left
-        {Vec4{ 0.5f,  0.5f, 0.5f, 1.0f},  Vec2{1.0f, 0.0f}, {0.0f, 1.0f, 0.0f,  0.0f}}, // bottom-right
-        {Vec4{ 0.5f,  0.5f, -0.5f, 1.0f},  Vec2{1.0f, 1.0f}, {0.0f, 1.0f, 0.0f, 0.0f}}, // top-right
-        {Vec4{ 0.5f,  0.5f, 0.5f, 1.0f},  Vec2{1.0f, 0.0f}, {0.0f, 1.0f, 0.0f,  0.0f}}, // bottom-right
-        {Vec4{-0.5f,  0.5f, -0.5f, 1.0f},  Vec2{0.0f, 1.0f}, {0.0f, 1.0f, 0.0f, 0.0f}}, // top-left
-        {Vec4{-0.5f,  0.5f, 0.5f, 1.0f},  Vec2{0.0f, 0.0f}, {0.0f, 1.0f, 0.0f,  0.0f}}  // bottom-left
-};*/
-
 constexpr int WindowWidth = 720;
 constexpr int WindowHeight = 480;
 
